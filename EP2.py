@@ -6,3 +6,13 @@ def cria_baralho():
         for nu in numeros:
             baralho.append(nu+na)
     return baralho
+
+def extrai_naipe(carta):
+    if '♦' in carta:
+        return '♦'
+    elif'♥' in carta:
+        return '♥'
+    elif'♣' in carta:
+        return '♣'
+    elif'♠' in carta:
+        return '♠'
