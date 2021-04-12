@@ -16,3 +16,9 @@ def extrai_naipe(carta):
         return '♣'
     elif'♠' in carta:
         return '♠'
+
+def extrai_valor(carta):
+    if '10' in carta:
+        return '10'
+    else:
+        return carta[0]
