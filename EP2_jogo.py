@@ -1,2 +1,2 @@
-import EP2 funções
+import EP2_funções
 baralho=random.sample(cria_baralho)
