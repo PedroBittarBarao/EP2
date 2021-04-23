@@ -33,3 +33,8 @@ def lista_movimentos_possiveis(baralho,i):
                 result.append(3)
     return result
 
+def empilha(baralho,origem,destino):
+    baralho[destino]=baralho[origem]
+    del baralho[origem]
+    return baralho
+
