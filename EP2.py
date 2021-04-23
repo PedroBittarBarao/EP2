@@ -22,3 +22,14 @@ def extrai_valor(carta):
         return '10'
     else:
         return carta[0]
+
+def lista_movimentos_possiveis(baralho,i):
+    result=[]
+    if i>0:
+        if extrai_naipe(baralho[i])==extrai_naipe(baralho[i-1]) or extrai_valor(baralho[i])==extrai_valor(baralho[i-1]) :
+            result.append(1)
+        if i>2:
+            if extrai_naipe(baralho[i-3])==extrai_naipe(baralho[i]) or extrai_valor(baralho[i-3])==extrai_valor(baralho[i]):
+                result.append(3)
+    return result
+
