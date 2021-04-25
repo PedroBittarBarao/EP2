@@ -20,7 +20,7 @@ else:
     while EP2_funçoes.possui_movimentos_possiveis:
         print(imprime_jogo())
         indice=int(input('Escolha o número de uma carta: '))
-        while EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[] or indice<1 or indice>len(baralho): #Consertar se o usuário escolher o ultima carta
+        while EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[] or indice<1 or indice>len(baralho): #Consertar se o usuário escolher a ultima carta
             print('Carta Inválida')
             indice=int(input('Escolha o número de uma carta: '))
         if EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[1]:
