@@ -1,11 +1,10 @@
-import random
 def cria_baralho():
     naipes=['♠', '♥','♦','♣']
     numeros=['A','2','3','4','5','6','7','8','9','10','J','Q','K']
     baralho=[]
     for na in naipes:
         for nu in numeros:
-            baralho.append(nu+na)
+            baralho.append(na+nu)
     return baralho
 
 def extrai_naipe(carta):
@@ -26,7 +25,7 @@ def extrai_valor(carta):
 
 def lista_movimentos_possiveis(baralho,i):
     result=[]
-    if i>0:
+    if i>0 and not i > len(baralho):
         if extrai_naipe(baralho[i])==extrai_naipe(baralho[i-1]) or extrai_valor(baralho[i])==extrai_valor(baralho[i-1]) :
             result.append(1)
         if i>2:
