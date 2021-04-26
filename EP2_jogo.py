@@ -1,7 +1,7 @@
 import EP2_funçoes
 import random
-baralho=EP2_funçoes.cria_baralho()
-baralho=random.sample(baralho,52)
+deck=EP2_funçoes.cria_baralho()
+baralho=random.sample(deck,52)
 
 def imprime_jogo():
     i=0
@@ -13,40 +13,40 @@ def imprime_jogo():
         i+=1
     return ''
     
-quer_jogar=input('Quer jogar ? ')
-while quer_jogar!='sim':
+while True:
     quer_jogar=input('Quer jogar ? ')
-else:
-    estado_do_jogo=EP2_funçoes.possui_movimentos_possiveis(baralho)
-    while estado_do_jogo :
-        print(imprime_jogo())
-        numero=int(input('Escolha o número de uma carta: '))
-        indice=numero-1
-        while indice<0 or indice>len(baralho) or indice==len(baralho) or EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[] : #Consertar se o usuário escolher a ultima carta
-            print('Carta Inválida')
+    if quer_jogar=='sim':
+        estado_do_jogo=EP2_funçoes.possui_movimentos_possiveis(baralho)
+        while estado_do_jogo :
+            print(imprime_jogo())
             numero=int(input('Escolha o número de uma carta: '))
             indice=numero-1
-        if EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[1]:
-            baralho=EP2_funçoes.empilha(baralho,indice,indice-1)
-        elif EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[3]:
-            baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
-        elif EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[1,3]:
-            escolha_valida==False
-            while not escolha_valida:
-                numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
-                if numero_escolha == (numero-1):
-                    baralho=EP2_funçoes.empilha(baralho,indice,indice-1)
-                    escolha_valida==True
-                elif numero_escolha == (numero-3):
-                    baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
-                    escolha_valida==True
-                else:
-                    print('Escolha Inválida')
+            while indice<0 or indice>len(baralho) or indice==len(baralho) or EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[]:
+                print('Carta Inválida')
+                numero=int(input('Escolha o número de uma carta: '))
+                indice=numero-1
+            if EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[1]:
+                baralho=EP2_funçoes.empilha(baralho,indice,indice-1)
+            elif EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[3]:
+                baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
+            elif EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[1,3]:
+                escolha_invalida=True
+                while escolha_invalida==True:
                     numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
-        estado_do_jogo=EP2_funçoes.possui_movimentos_possiveis(baralho)
-    if len(baralho)==1:
-        print('Ganhou')
-    elif len(baralho)>1:
-        print('Perdeu')
-    quer_jogar=input('Quer jogar ? ')
+                    if numero_escolha == (numero-1):
+                        baralho=EP2_funçoes.empilha(baralho,indice,indice-1)
+                        escolha_invalida=False
+                    elif numero_escolha == (numero-3):
+                        baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
+                        escolha_invalida=False
+                    elif numero_escolha != (numero-3) and numero_escolha != (numero-1):
+                        print('Escolha Inválida')
+                        numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
+            estado_do_jogo=EP2_funçoes.possui_movimentos_possiveis(baralho)
+        if len(baralho)==1:
+            print('Ganhou')
+        elif len(baralho)>1:
+            print('Perdeu')
+        baralho=random.sample(deck,52)
+
 
