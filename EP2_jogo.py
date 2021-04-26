@@ -6,7 +6,10 @@ baralho=random.sample(baralho,52)
 def imprime_jogo():
     i=0
     while i<len(baralho):
-        print('{}: {}'.format(i+1,baralho[i]))
+        if EP2_funçoes.extrai_naipe(baralho[i])=='♥' or EP2_funçoes.extrai_naipe(baralho[i])=='♦':
+            print(' {}:\033[2;31;47m {}  \033[0;0m'.format(i+1,baralho[i]))
+        elif EP2_funçoes.extrai_naipe(baralho[i])=='♣' or EP2_funçoes.extrai_naipe(baralho[i])=='♠':
+            print(' {}:\033[2;30;47m {}  \033[0;0m'.format(i+1,baralho[i]))
         i+=1
     return ''
     
@@ -44,4 +47,5 @@ else:
         print('Ganhou')
     elif len(baralho)>1:
         print('Perdeu')
+    quer_jogar=input('Quer jogar ? ')
 
