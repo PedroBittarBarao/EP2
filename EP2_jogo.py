@@ -31,17 +31,18 @@ else:
         elif EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[3]:
             baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
         elif EP2_funçoes.lista_movimentos_possiveis(baralho,indice)==[1,3]:
-            numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
-            if numero_escolha == (numero-1):
-                baralho=EP2_funçoes.empilha(baralho,indice,indice-1)
-            else:
-                print('Escolha Inválida')
+            escolha_valida==False
+            while not escolha_valida:
                 numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
-            if numero_escolha == (numero-1):
-                baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
-            else:
-                print('Escolha Inválida')
-                numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
+                if numero_escolha == (numero-1):
+                    baralho=EP2_funçoes.empilha(baralho,indice,indice-1)
+                    escolha_valida==True
+                elif numero_escolha == (numero-3):
+                    baralho=EP2_funçoes.empilha(baralho,indice,indice-3)
+                    escolha_valida==True
+                else:
+                    print('Escolha Inválida')
+                    numero_escolha=int(input('Escolha o número da carta de destino: {}: {} ou {}: {} ? '.format(numero-1,baralho[indice-1],numero-3,baralho[indice-3])))
         estado_do_jogo=EP2_funçoes.possui_movimentos_possiveis(baralho)
     if len(baralho)==1:
         print('Ganhou')
